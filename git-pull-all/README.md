@@ -1,6 +1,6 @@
 # git-pull-all.{fish|sh}
 
-This shell script is used to iterate through some child directories and do `git pull` in each directory. There's a report at the end of script execution. You may use .fish version if you use [https://fishshell.com](Fish) or .sh if you use [https://www.gnu.org/software/bash/](Bash).
+This shell script is used to iterate through some child directories and do `git pull` in each directory. There's a report at the end of script execution. You may use .fish version if you use [Fish](https://fishshell.com) or .sh if you use [Bash](https://www.gnu.org/software/bash/).
 
 ## How to setup 
 

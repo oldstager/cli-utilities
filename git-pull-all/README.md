@@ -56,8 +56,27 @@ cd $HOME/master/rust/src
 git-pull-all.sh
 ```
 
-or (only in Bash version), you may use from any directory.
+or (only in Bash version), you may use from any directory. Argument should be started from absolute path, not relative path (this will be changed soon after I swith my shell to Bash :-D ).
 
 ```
 git-pull-all.sh $HOME/master/rust/src 
 ```
+
+In Fish version, you may put zero argument (current directory), or use absolute as well as relative path:
+
+```
+cd $HOME/master/rust/src
+git-pull-all.fish
+```
+
+or (from home directory, use one of these commands):
+
+```
+git-pull-all.fish master/rust/src
+git-pull-all.fish ~/master/rust/src
+git-pull-all.fish /home/user/master/rust/src
+```
+
+
+
+

@@ -56,7 +56,7 @@ cd $HOME/master/rust/src
 git-pull-all.sh
 ```
 
-or (only in Bash version), you may use from any directory. Argument should be started from absolute path, not relative path (this will be changed soon after I swith my shell to Bash :-D ).
+or (only in Bash version), you may use from any directory. Argument should be started from absolute path, not relative path (this will be changed soon after I switch my shell to Bash :-D ).
 
 ```
 git-pull-all.sh $HOME/master/rust/src 

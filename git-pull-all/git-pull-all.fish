@@ -1,9 +1,28 @@
 #!/usr/bin/fish
 
-set dir (pwd)
+set origdir (pwd)
 set sumuptodate 0
 set sumupdated 0
 set listupdated
+
+echo 
+
+if test -n "$argv"
+  set startdir (string sub -s 1 -l 1 $argv)
+  if test $startdir != "/"
+    and test $startdir != "~"
+    echo "Using relative dir $argv"
+    set dir (string join "" $origdir "/" $argv)
+  else
+    echo "Using absolut dir $argv"
+    set dir $argv
+  end
+else
+  set dir $origdir
+end
+
+echo "Processing $dir"
+echo
 
 for f in "$dir"/*
 	echo "||| Check $f"
@@ -14,7 +33,7 @@ for f in "$dir"/*
             set IFS ""
             set OUTPUT (git pull)
             set repo (basename $f)
-            if [ "$OUTPUT" = "Already up-to-date." ]
+            if [ "$OUTPUT" = "Already up to date." ]
                 set sumuptodate (math $sumuptodate + 1)
                 echo "$repo is up-to-date"
             else

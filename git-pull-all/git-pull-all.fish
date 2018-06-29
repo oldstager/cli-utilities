@@ -11,21 +11,32 @@ if test -n "$argv"
   set startdir (string sub -s 1 -l 1 $argv)
   if test $startdir != "/"
     and test $startdir != "~"
-    echo "Using relative dir $argv"
+    echo
+    echo "+---------------------------------"
+    echo "| >> Using relative dir $argv"
+    echo "+---------------------------------"
+    echo
     set dir (string join "" $origdir "/" $argv)
   else
-    echo "Using absolut dir $argv"
+    echo
+    echo "+---------------------------------"
+    echo "| >> Using absolut dir $argv"
+    echo "+---------------------------------"
+    echo
     set dir $argv
   end
 else
   set dir $origdir
 end
 
-echo "Processing $dir"
+echo ">> Processing $dir <<"
 echo
 
 for f in "$dir"/*
-	echo "||| Check $f"
+  echo
+  echo "+-----------------------------------------"
+	echo "| Check $f"
+  echo "+-----------------------------------------"
 	if test -d "$f"
 		if test -d "$f/.git"
 			cd "$f"
@@ -35,7 +46,7 @@ for f in "$dir"/*
             set repo (basename $f)
             if [ "$OUTPUT" = "Already up to date." ]
                 set sumuptodate (math $sumuptodate + 1)
-                echo "$repo is up-to-date"
+                echo "=> $repo is up-to-date"
             else
                 set sumupdated (math $sumupdated + 1)
                 echo $OUTPUT
@@ -43,12 +54,16 @@ for f in "$dir"/*
             end
             set IFS "$oldIFS"
 		else
-			echo "$f is not a git repository, aborting"
-        end
+      echo
+      echo "+-------------------------------------------"
+			echo "| >> $f is not a git repository, aborting"
+      echo "+-------------------------------------------"
+      echo
+    end
 	else
 		echo "skip $f - not a directory"
     end
-    echo "||| Finish checking $repo"
+    echo ">> Finish checking $repo"
 end
 
 echo

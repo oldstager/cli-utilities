@@ -23,7 +23,7 @@ if test -z $alreadydownloaded
   for oldf in "$masterdir"/*
     set oldmaster (echo $oldf | grep "+")
     if test -z $oldmaster
-      echo "$ldf is not old master, proceed to next"
+      echo "$oldf is not old master, proceed to next"
     else
       echo "Deleting $oldf ..."
       rm $oldf
@@ -44,9 +44,6 @@ if test -d "$prefixdir/zig-linux-x86_64-$currver"
   echo "Finish without installing master"
   echo 
 else
-  if test -f "$prefixdir/zig-master"
-    rm "$prefixdir/zig-master"
-  end
   for f in "$prefixdir"/*
     set evalfile (echo $f | grep "+")
     if test -z $evalfile
@@ -54,6 +51,7 @@ else
       echo
     else
       echo "old master exist - $f - deleted"
+      rm zig-master
       rm -rf $f
     end
   end

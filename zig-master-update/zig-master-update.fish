@@ -51,13 +51,13 @@ else
       echo
     else
       echo "old master exist - $f - deleted"
-      rm zig-master
       rm -rf $f
     end
   end
   echo "Extracting and installing"
   echo
   cd $prefixdir
+  rm zig-master
   tar -xvf "$masterdir/zig-linux-x86_64-$currver.tar.xz"
   ln -s zig-linux-x86_64-$currver zig-master
   echo "Finish."
